@@ -3,74 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한국어 2A 8과 문법 종합 퀴즈</title>
+    <title>서울대학교 한국어 2A 퀴즈</title>
     <style>
-        :root { --primary: #2c3e50; --accent: #e67e22; --bg: #f4f7f6; --success: #27ae60; --error: #e74c3c; }
-        body { font-family: 'Malgun Gothic', sans-serif; background: var(--bg); margin: 0; padding: 20px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 3px solid var(--accent); margin-bottom: 20px; padding-bottom: 15px; }
-        
-        /* 타이머 */
-        .timer-wrapper { position: sticky; top: 0; background: white; padding: 10px; z-index: 100; border-bottom: 2px solid #eee; text-align: right; margin-bottom: 20px; }
-        #timer { font-size: 1.5em; font-weight: bold; color: var(--error); }
-
-        /* 점수판 */
-        #scoreDisplay { display: none; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 25px; }
-        
-        .section-title { background: #ecf0f1; color: #2c3e50; padding: 10px 15px; border-left: 5px solid var(--accent); margin-top: 30px; border-radius: 3px; }
-        .question-block { border-bottom: 1px solid #eee; padding: 15px 0; }
-        .dialogue { background: #fdfdfd; padding: 10px; margin: 10px 0; border-radius: 5px; font-style: italic; }
-        
-        input[type="text"] { padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px; width: 150px; font-size: 1em; }
-        .result-msg { font-weight: bold; margin-top: 8px; display: block; }
-        .correct { color: var(--success); }
-        .incorrect { color: var(--error); }
-
-        .btn-submit { display: block; width: 100%; background: var(--accent); color: white; border: none; padding: 15px; font-size: 1.2em; border-radius: 8px; cursor: pointer; margin-top: 30px; font-weight: bold; transition: 0.3s; }
-        .btn-submit:hover { background: #d35400; }
+        body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; text-align: center; margin-top: 50px; }
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        p.subtitle { color: #7f8c8d; margin-bottom: 30px; font-size: 1.1em; }
+        .quiz-list { list-style: none; padding: 0; margin: 0; }
+        .quiz-list li { margin-bottom: 15px; }
+        .quiz-btn { display: block; padding: 15px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 8px; font-size: 1.2em; font-weight: bold; transition: background-color 0.3s; }
+        .quiz-btn:hover { background-color: #2980b9; }
+        .footer { margin-top: 40px; font-size: 0.9em; color: #95a5a6; border-top: 1px solid #ecf0f1; padding-top: 20px; }
+        .admin-link { color: #bdc3c7; text-decoration: none; font-size: 0.8em; }
+        .admin-link:hover { color: #7f8c8d; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="timer-wrapper">남은 시간: <span id="timer">30:00</span></div>
+    <h1>🎓 서울대학교 한국어 2A</h1>
+    <p class="subtitle">온라인 퀴즈 목록</p>
 
-    <div class="header">
-        <h2>📖 2A 8과: 정말 속상하겠어요</h2>
-        <p>이름: <input type="text" id="userName" placeholder="이름 입력" style="width:150px;"></p>
+    <ul class="quiz-list">
+        <li><a href="ch8.html" class="quiz-btn">📖 8과 종합 퀴즈 풀기</a></li>
+        
+        <li><a href="ch9.html" class="quiz-btn">📖 9과 종합 퀴즈 풀기</a></li>
+    </ul>
+
+    <div class="footer">
+        <p>문제가 있으면 담당 조교나 교수님께 문의하세요.</p>
+        <a href="admin.html" class="admin-link">⚙️ 관리자 페이지</a>
     </div>
-
-    <div id="scoreDisplay">
-        <h3 id="userResultName">결과 리포트</h3>
-        <div style="font-size: 2.5em; font-weight: bold;"><span id="finalScore">0</span> / 100점</div>
-        <p id="comment"></p>
-    </div>
-
-    <h3 class="section-title">1. A/V-겠- (추측/공감)</h3>
-    <div id="sec1"></div>
-
-    <h3 class="section-title">2. N 때문에 (이유)</h3>
-    <div id="sec2"></div>
-
-    <h3 class="section-title">3. V-아/어 버리다 (완료/아쉬움)</h3>
-    <div id="sec3"></div>
-
-    <h3 class="section-title">4. A/V-(으)ㄹ 때 (시간)</h3>
-    <div id="sec4"></div>
-
-    <button class="btn-submit" id="submitBtn" onclick="gradeQuiz()">제출 및 채점하기</button>
 </div>
 
-<script>
-    const quizData = [
-        // -겠-
-        { s: 1, q: "가: 어제 잠을 한 시간밖에 못 잤어요.<br>나: 와, 정말 (피곤하다) [피곤하겠어요].", a: "피곤하겠어요" },
-        { s: 1, q: "가: 다음 달에 유럽으로 여행을 가요.<br>나: 좋겠다! 정말 (재미있다) [재미있겠어요].", a: "재미있겠어요" },
-        { s: 1, q: "가: 어제 지갑을 잃어버렸어요.<br>나: 아이고, 정말 (속상하다) [속상하겠어요].", a: "속상하겠어요" },
-        { s: 1, q: "가: 이번 시험에서 1등을 했어요.<br>나: 축하해요! 부모님이 정말 (기뻐하다) [기뻐하시겠어요].", a: "기뻐하시겠어요" },
-        { s: 1, q: "가: 혼자서 이 많은 일을 다 했어요?<br>나: 네, 정말 (힘들다) [힘들겠어요].", a: "힘들겠어요" },
-        { s: 1, q: "가: 내일이 여자친구 생일이에요.<br>나: 선물을 준비했으니까 여자친구가 (좋아하다) [좋아하겠어요].", a: "좋아하겠어요" },
-        { s: 1, q: "가: 아침부터 아무것도 못 먹었어요.<br>나: 배가 많이 (고프다) [고프겠어요].", a: "고프겠어요" },
-        { s: 1, q: "가: 지수 씨가 오늘 아파서 학교에 못 왔어요.<br>나: 많이 (아프다) [아프겠어요]. 걱정되네요.", a: "아프겠어요" },
-        { s: 1, q: "가: 이 영화는 평점이 아주 높아요.<br>나: 그래요? 아주 (재미있다) [재미있겠네요/재미있겠어요].", a: "재미있겠어요" },
-        { s: 1, q: "가: 어제 운동을 5시간이나 했어요.<br>나: 오늘 몸이 많이 (무겁다) [무겁겠어요].", a:
+</body>
+</html>
