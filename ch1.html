@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울대 한국어 2A - 1과 연습</title>
+    <style>
+        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; background-color: #f9f9f9; }
+        h1 { text-align: center; color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        .info-box { background: #e8f4f8; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #3498db; }
+        .timer { color: #e74c3c; font-size: 1.3em; font-weight: bold; }
+        .stage-container { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .stage-title { color: #fff; background-color: #2c3e50; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 1.2em; text-align: center;}
+        .question-item { margin-bottom: 20px; font-size: 1.1em; }
+        .dialogue { background: #f1f2f6; padding: 15px; border-radius: 5px; }
+        select { padding: 5px; font-size: 1em; border-radius: 4px; border: 1px solid #bdc3c7; }
+        input[type="text"] { border: 1px solid #bdc3c7; border-radius: 4px; padding: 5px; font-size: 1em; width: 150px; }
+        .action-btn { display: block; width: 100%; padding: 15px; color: white; border: none; border-radius: 8px; font-size: 1.2em; cursor: pointer; margin-top: 20px; font-weight: bold; }
+        .submit-btn { background: #27ae60; }
+        .submit-btn:hover { background: #2ecc71; }
+        .next-btn { background: #e67e22; display: none; }
+        .next-btn:hover { background: #d35400; }
+        .correct-answer { color: #e74c3c; font-size: 0.9em; display: none; margin-top: 5px; font-weight: bold; }
+        .feedback { text-align: center; font-size: 1.2em; font-weight: bold; color: #2980b9; margin-top: 10px; display: none; }
+    </style>
+</head>
+<body>
+
+    <h1>📝 1과: 처음 뵙겠습니다</h1>
+    
+    <div class="info-box">
+        <div id="stageIndicator">현재 단계: 1단계 (워밍업)</div>
+        <div class="timer" id="timerDisplay">남은 시간: 03:00</div>
+    </div>
+
+    <div id="stage1" class="stage-container">
+        <div class="stage-title">🌱 1단계: 워밍업 (기본 형태 연습) - 3분</div>
+        <p>※ 빈칸에 알맞은 형태를 고르세요.</p>
+        <div class="question-item"><div class="dialogue">1. 저는 제임스 <select class="q1-input" data-answer="라고 합니다"><option value="">선택</option><option value="라고 합니다">라고 합니다</option><option value="이라고 합니다">이라고 합니다</option></select></div><div class="correct-answer">정답: 라고 합니다</div></div>
+        <div class="question-item"><div class="dialogue">2. 친구를 <select class="q1-input" data-answer="만나려고"><option value="">선택</option><option value="만나려고">만나려고</option><option value="만날려고">만날려고</option></select> 커피숍에 가요.</div><div class="correct-answer">정답: 만나려고</div></div>
+        <div class="question-item"><div class="dialogue">3. 주말에는 영화를 <select class="q1-input" data-answer="보거나"><option value="">선택</option><option value="보거나">보거나</option><option value="보고">보고</option></select> 책을 읽어요.</div><div class="correct-answer">정답: 보거나</div></div>
+        <div class="question-item"><div class="dialogue">4. 아침에는 빵 <select class="q1-input" data-answer="이나"><option value="">선택</option><option value="이나">이나</option><option value="나">나</option></select> 밥을 먹어요.</div><div class="correct-answer">정답: 이나</div></div>
+        <div class="question-item"><div class="dialogue">5. 돈을 <select class="q1-input" data-answer="찾으려고"><option value="">선택</option><option value="찾으려고">찾으려고</option><option value="찾으러고">찾으러고</option></select> 은행에 가요.</div><div class="correct-answer">정답: 찾으려고</div></div>
+        
+        <div class="feedback" id="feedback1"></div>
+        <button class="action-btn submit-btn" onclick="checkAnswers(1)">1단계 정답 확인</button>
+        <button class="action-btn next-btn" id="next1" onclick="nextStage(2)">2단계로 이동하기 ➔</button>
+    </div>
+
+    <div id="stage2" class="stage-container" style="display: none;">
+        <div class="stage-title">🌿 2단계: 문법 적용 (대화문 완성) - 5분</div>
+        <p>※ 대화를 읽고 빈칸에 알맞은 말을 고르세요.</p>
+        <div class="question-item"><div class="dialogue">1. 가: 이름이 뭐예요?<br>나: 저는 마이클 <select class="q2-input" data-answer="이라고 합니다"><option value="">선택</option><option value="라고 합니다">라고 합니다</option><option value="이라고 합니다">이라고 합니다</option></select></div><div class="correct-answer">정답: 이라고 합니다</div></div>
+        <div class="question-item"><div class="dialogue">2. 가: 왜 백화점에 가요?<br>나: 옷을 <select class="q2-input" data-answer="사려고"><option value="">선택</option><option value="사려고">사려고</option><option value="사러고">사러고</option></select> 가요.</div><div class="correct-answer">정답: 사려고</div></div>
+        <div class="question-item"><div class="dialogue">3. 가: 방학에 뭐 할 거예요?<br>나: 여행을 <select class="q2-input" data-answer="가거나"><option value="">선택</option><option value="가거나">가거나</option><option value="가고">가고</option></select> 아르바이트를 할 거예요.</div><div class="correct-answer">정답: 가거나</div></div>
+        <div class="question-item"><div class="dialogue">4. 가: 보통 뭐 마셔요?<br>나: 주스 <select class="q2-input" data-answer="나"><option value="">선택</option><option value="이나">이나</option><option value="나">나</option></select> 물을 마셔요.</div><div class="correct-answer">정답: 나</div></div>
+        <div class="question-item"><div class="dialogue">5. 가: 왜 도서관에 가요?<br>나: 책을 <select class="q2-input" data-answer="빌리려고"><option value="">선택</option><option value="빌리려고">빌리려고</option><option value="빌릴려고">빌릴려고</option></select> 가요.</div><div class="correct-answer">정답: 빌리려고</div></div>
+        
+        <div class="feedback" id="feedback2"></div>
+        <button class="action-btn submit-btn" onclick="checkAnswers(2)">2단계 정답 확인</button>
+        <button class="action-btn next-btn" id="next2" onclick="nextStage(3)">3단계로 이동하기 ➔</button>
+    </div>
+
+    <div id="stage3" class="stage-container" style="display: none;">
+        <div class="stage-title">🌳 3단계: 심화 (직접 쓰기) - 7분</div>
+        <p>※ 괄호 안의 단어를 사용하여 대화를 완성하세요. (직접 입력)</p>
+        <div class="question-item"><div class="dialogue">1. 가: 처음 뵙겠습니다. 이름이 뭐예요?<br>나: 저는 <input type="text" class="q3-input" data-answer="김민수라고합니다">. [김민수]</div><div class="correct-answer">정답: 김민수라고 합니다</div></div>
+        <div class="question-item"><div class="dialogue">2. 가: 왜 한국어를 배워요?<br>나: 한국 회사에 <input type="text" class="q3-input" data-answer="취직하려고"> 배워요. [취직하다]</div><div class="correct-answer">정답: 취직하려고</div></div>
+        <div class="question-item"><div class="dialogue">3. 가: 피곤할 때 어떻게 해요?<br>나: 보통 음악을 <input type="text" class="q3-input" data-answer="듣거나자요">. [듣다 / 자다]</div><div class="correct-answer">정답: 듣거나 자요</div></div>
+        <div class="question-item"><div class="dialogue">4. 가: 생일 선물로 뭘 받고 싶어요?<br>나: <input type="text" class="q3-input" data-answer="시계나지갑을"> 받고 싶어요. [시계 / 지갑]</div><div class="correct-answer">정답: 시계나 지갑을 (또는 시계나 지갑)</div></div>
+        <div class="question-item"><div class="dialogue">5. 가: 방학에 고향에 갈 거예요?<br>나: 아니요, 돈을 <input type="text" class="q3-input" data-answer="벌려고"> 아르바이트를 할 거예요. [벌다]</div><div class="correct-answer">정답: 벌려고</div></div>
+        
+        <div class="feedback" id="feedback3"></div>
+        <button class="action-btn submit-btn" onclick="checkAnswers(3)">최종 정답 확인</button>
+        <button class="action-btn next-btn" id="next3" onclick="finishQuiz()" style="background-color: #8e44ad;">🎉 수고하셨습니다 (처음으로)</button>
+    </div>
+
+    <script>
+        let currentStage = 1;
+        let timeLeft = 180; // 1단계 3분
+        let timerInterval;
+        const stageTimes = { 1: 180, 2: 300, 3: 420 }; // 단계별 시간 (초)
+
+        function updateTimerDisplay() {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            document.getElementById('timerDisplay').innerText = `남은 시간: ${m < 10 ? '0':''}${m}:${s < 10 ? '0':''}${s}`;
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert(`시간이 초과되었습니다! 자동으로 ${currentStage}단계 채점을 진행합니다.`);
+                    checkAnswers(currentStage);
+                }
+            }, 1000);
+        }
+
+        function checkAnswers(stage) {
+            clearInterval(timerInterval); // 타이머 멈춤
+            let score = 0;
+            const inputs = document.querySelectorAll(`.q${stage}-input`);
+            const answerDisplays = document.querySelectorAll(`#stage${stage} .correct-answer`);
+            
+            inputs.forEach((input, index) => {
+                input.disabled = true; // 수정 불가
+                let userAnswer = input.value.replace(/\s+/g, '').trim(); // 띄어쓰기 무시
+                let correctAnswer = input.getAttribute('data-answer').replace(/\s+/g, '').trim();
+                
+                // 3단계의 경우 '을/를' 생략 등 유연한 채점 허용 로직
+                if(stage === 3 && index === 3 && userAnswer === "시계나지갑") { userAnswer = "시계나지갑을"; }
+
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    input.style.backgroundColor = '#d4edda';
+                    input.style.borderColor = '#28a745';
+                } else {
+                    input.style.backgroundColor = '#f8d7da';
+                    input.style.borderColor = '#dc3545';
+                    answerDisplays[index].style.display = 'block';
+                }
+            });
+
+            // 피드백 및 버튼 전환
+            const fb = document.getElementById(`feedback${stage}`);
+            fb.innerText = `[${stage}단계 결과] 5문제 중 ${score}문제 정답!`;
+            fb.style.display = 'block';
+            
+            document.querySelector(`#stage${stage} .submit-btn`).style.display = 'none';
+            document.getElementById(`next${stage}`).style.display = 'block';
+        }
+
+        function nextStage(next) {
+            document.getElementById(`stage${currentStage}`).style.display = 'none';
+            currentStage = next;
+            document.getElementById(`stage${currentStage}`).style.display = 'block';
+            
+            let stageName = next === 2 ? "2단계 (문법 적용)" : "3단계 (심화 쓰기)";
+            document.getElementById('stageIndicator').innerText = `현재 단계: ${stageName}`;
+            
+            timeLeft = stageTimes[next];
+            startTimer();
+            window.scrollTo(0, 0);
+        }
+
+        function finishQuiz() {
+            window.location.href = "index.html"; // 메인 메뉴로 돌아가기
+        }
+
+        window.onload = startTimer;
+    </script>
+</body>
+</html>
