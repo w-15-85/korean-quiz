@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서울대학교 한국어 2A - 단원별 퀴즈</title>
+    <title>서울대학교 한국어 2A - 단원별 퀴즈 & 복습</title>
     <style>
         body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; text-align: center; margin-top: 30px; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 650px; text-align: center; margin-top: 30px; }
         h1 { color: #2c3e50; margin-bottom: 5px; }
         p.subtitle { color: #7f8c8d; margin-bottom: 25px; font-size: 1.1em; }
         .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; list-style: none; padding: 0; margin: 0; }
         .quiz-grid li { width: 100%; }
         .quiz-btn { display: block; padding: 15px; background-color: #3498db; color: white; text-decoration: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; transition: background-color 0.3s; }
         .quiz-btn:hover { background-color: #2980b9; }
+        .review-btn { background-color: #e67e22; }
+        .review-btn:hover { background-color: #d35400; }
         .footer { margin-top: 40px; font-size: 0.9em; color: #95a5a6; border-top: 1px solid #ecf0f1; padding-top: 20px; }
     </style>
 </head>
@@ -20,18 +22,23 @@
 
 <div class="container">
     <h1>🎓 서울대학교 한국어 2A</h1>
-    <p class="subtitle">단원별 문법 연습 (1과 ~ 9과)</p>
+    <p class="subtitle">단원별 문법 연습 및 종합 복습</p>
 
     <ul class="quiz-grid">
-        <li><a href="ch1.html" class="quiz-btn">📖 1과 퀴즈 풀기</a></li>
-        <li><a href="ch2.html" class="quiz-btn">📖 2과 퀴즈 풀기</a></li>
-        <li><a href="ch3.html" class="quiz-btn">📖 3과 퀴즈 풀기</a></li>
-        <li><a href="ch4.html" class="quiz-btn">📖 4과 퀴즈 풀기</a></li>
-        <li><a href="ch5.html" class="quiz-btn">📖 5과 퀴즈 풀기</a></li>
-        <li><a href="ch6.html" class="quiz-btn">📖 6과 퀴즈 풀기</a></li>
-        <li><a href="ch7.html" class="quiz-btn">📖 7과 퀴즈 풀기</a></li>
-        <li><a href="ch8.html" class="quiz-btn">📖 8과 퀴즈 풀기</a></li>
-        <li style="grid-column: span 2;"><a href="ch9.html" class="quiz-btn">📖 9과 퀴즈 풀기</a></li>
+        <li><a href="ch1.html" class="quiz-btn">📖 1과 퀴즈</a></li>
+        <li><a href="ch2.html" class="quiz-btn">📖 2과 퀴즈</a></li>
+        <li><a href="ch3.html" class="quiz-btn">📖 3과 퀴즈</a></li>
+        <li><a href="rev1.html" class="quiz-btn review-btn">🔥 복습 1 (1~3과)</a></li>
+        
+        <li><a href="ch4.html" class="quiz-btn">📖 4과 퀴즈</a></li>
+        <li><a href="ch5.html" class="quiz-btn">📖 5과 퀴즈</a></li>
+        <li><a href="ch6.html" class="quiz-btn">📖 6과 퀴즈</a></li>
+        <li><a href="rev2.html" class="quiz-btn review-btn">🔥 복습 2 (4~6과)</a></li>
+        
+        <li><a href="ch7.html" class="quiz-btn">📖 7과 퀴즈</a></li>
+        <li><a href="ch8.html" class="quiz-btn">📖 8과 퀴즈</a></li>
+        <li><a href="ch9.html" class="quiz-btn">📖 9과 퀴즈</a></li>
+        <li><a href="rev3.html" class="quiz-btn review-btn">🔥 복습 3 (7~9과)</a></li>
     </ul>
 
     <div class="footer">
