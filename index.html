@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>서울대학교 한국어 2A 퀴즈</title>
+    <title>서울대학교 한국어 2A - 단원별 퀴즈</title>
     <style>
         body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; text-align: center; margin-top: 50px; }
-        h1 { color: #2c3e50; margin-bottom: 10px; }
-        p.subtitle { color: #7f8c8d; margin-bottom: 30px; font-size: 1.1em; }
-        .quiz-list { list-style: none; padding: 0; margin: 0; }
-        .quiz-list li { margin-bottom: 15px; }
-        .quiz-btn { display: block; padding: 15px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 8px; font-size: 1.2em; font-weight: bold; transition: background-color 0.3s; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 600px; text-align: center; margin-top: 30px; }
+        h1 { color: #2c3e50; margin-bottom: 5px; }
+        p.subtitle { color: #7f8c8d; margin-bottom: 25px; font-size: 1.1em; }
+        .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; list-style: none; padding: 0; margin: 0; }
+        .quiz-grid li { width: 100%; }
+        .quiz-btn { display: block; padding: 15px; background-color: #3498db; color: white; text-decoration: none; border-radius: 8px; font-size: 1.1em; font-weight: bold; transition: background-color 0.3s; }
         .quiz-btn:hover { background-color: #2980b9; }
         .footer { margin-top: 40px; font-size: 0.9em; color: #95a5a6; border-top: 1px solid #ecf0f1; padding-top: 20px; }
-        .admin-link { color: #bdc3c7; text-decoration: none; font-size: 0.8em; }
-        .admin-link:hover { color: #7f8c8d; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>🎓 서울대학교 한국어 2A</h1>
-    <p class="subtitle">온라인 퀴즈 목록</p>
+    <p class="subtitle">단원별 문법 연습 (1과 ~ 9과)</p>
 
-    <ul class="quiz-list">
-        <li><a href="ch8.html" class="quiz-btn">📖 8과 종합 퀴즈 풀기</a></li>
-        
-        <li><a href="ch9.html" class="quiz-btn">📖 9과 종합 퀴즈 풀기</a></li>
+    <ul class="quiz-grid">
+        <li><a href="ch1.html" class="quiz-btn">📖 1과 퀴즈 풀기</a></li>
+        <li><a href="ch2.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 2과 (준비 중)</a></li>
+        <li><a href="ch3.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 3과 (준비 중)</a></li>
+        <li><a href="ch4.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 4과 (준비 중)</a></li>
+        <li><a href="ch5.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 5과 (준비 중)</a></li>
+        <li><a href="ch6.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 6과 (준비 중)</a></li>
+        <li><a href="ch7.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 7과 (준비 중)</a></li>
+        <li><a href="ch8.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 8과 (준비 중)</a></li>
+        <li style="grid-column: span 2;"><a href="ch9.html" class="quiz-btn" style="background-color: #bdc3c7;">📖 9과 (준비 중)</a></li>
     </ul>
 
     <div class="footer">
-        <p>문제가 있으면 담당 조교나 교수님께 문의하세요.</p>
-        <a href="admin.html" class="admin-link">⚙️ 관리자 페이지</a>
+        <p>※ 본 퀴즈는 자가 학습용이며 성적이 전송되지 않습니다.</p>
     </div>
 </div>
 
